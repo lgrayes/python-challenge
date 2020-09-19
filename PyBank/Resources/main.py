@@ -17,15 +17,18 @@ with open(budget_csv) as csvfile:
     startProfit = 0
     highestProfit = 0
     lowestProfit = 0
+    totalRows = 0
     total = 0
 
     #Set start in counting rows
     for row in csv_Reader:
         val = int(row[1])
         total = total + val
+
         if((val > 0) and val > highestProfit):
             highestProfit = val
-        #if((val< 0 ) and ):        
+        if((val< 0 ) and val < lowestProfit):
+            lowestProfit = val
 
 # #Define columns for calculations
 # def calculations(budgetData):
@@ -44,7 +47,6 @@ with open(budget_csv) as csvfile:
 # #Try this 2nd calculation for average
 # average_of_those_numbers = average
 
-
 # #Gather highest and lowest profit numbers to print
 # for x in column 2
 # if startProfit > 0 then
@@ -60,4 +62,4 @@ print ("Total Months: ")
 print (f"Total: {total}")
 # print (f”Average Change: {average_of_those_numbers}”)
 print (f"Greatest Increase in Profits:  {highestProfit}")
-# print (f”Greatest Decrease in Profits: ” {lowestProfit})
+print (f"Greatest Decrease in Profits:  {lowestProfit}")
