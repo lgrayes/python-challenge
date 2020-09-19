@@ -18,11 +18,13 @@ with open(budget_csv) as csvfile:
     highestProfit = 0
     lowestProfit = 0
     totalRows = 0
+    totalRowCount = 0
     total = 0
     average = 0
 
     #Set start in counting rows
     for row in csv_Reader:
+        # totalRowCount.append(totalRows)
         val = int(row[1])
         total = total + val
         totalRows = len(budget_csv)
@@ -40,6 +42,8 @@ print (f"Total Months: {totalRows}")
 print (f"Total: ${total}")
 print (f"Average Change: ${average}")
 print (f"Greatest Increase in Profits:  {highestProfit}")
+# Retrieve corresponding month for greatest profit result
+# print (f"Greatest Increase in Profits:  [{str(budgetcsv.index(Date))}] {highestProfit}")
 print (f"Greatest Decrease in Profits:  {lowestProfit}")
 
 # output to Analysis/csv folder
