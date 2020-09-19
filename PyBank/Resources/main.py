@@ -19,47 +19,30 @@ with open(budget_csv) as csvfile:
     lowestProfit = 0
     totalRows = 0
     total = 0
+    average = 0
 
     #Set start in counting rows
     for row in csv_Reader:
         val = int(row[1])
         total = total + val
+        totalRows = len(budget_csv)
+        average = total / totalRows
 
         if((val > 0) and val > highestProfit):
             highestProfit = val
         if((val< 0 ) and val < lowestProfit):
             lowestProfit = val
 
-# #Define columns for calculations
-# def calculations(budgetData):
-# date=int(budgetData[1])
-# Profit=int(budgetData[2])
-
-# #Calculate sum
-# #Calculate average
-# def average(budgetData):
-# 	sum = 0
-# 	for number in budgetData:
-# 		sum = sum + number
-
-# 	average_of_those_numbers = sum/len(budgetData)
-
-# #Try this 2nd calculation for average
-# average_of_those_numbers = average
-
-# #Gather highest and lowest profit numbers to print
-# for x in column 2
-# if startProfit > 0 then
-# 	highestProfit = startProfit + highestProfit
-# else
-# 	lowestProfit = startProfit + lowestProfit
-
-
 print ("_____________________________")
 print ("Financial Analysis")
 print ("_____________________________")
-print ("Total Months: ")
-print (f"Total: {total}")
-# print (f”Average Change: {average_of_those_numbers}”)
+print (f"Total Months: {totalRows}")
+print (f"Total: ${total}")
+print (f"Average Change: ${average}")
 print (f"Greatest Increase in Profits:  {highestProfit}")
 print (f"Greatest Decrease in Profits:  {lowestProfit}")
+
+# output to Analysis/csv folder
+with open(output_path, 'w') as csvfile:
+    csvwriter = csv.writer(csvfile, delimiter=',')
+    csvwriter.writerow(['Total Months'])
