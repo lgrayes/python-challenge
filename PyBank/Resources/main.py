@@ -2,6 +2,9 @@
 import os
 import csv
 
+header = []
+rows = []
+
 #Set file paths
 #THANK YOU TO MO FOR THE HELP
 budget_csv = os.path.join("budget_data.csv")
@@ -22,13 +25,15 @@ with open(budget_csv) as csvfile:
     total = 0
     average = 0
 
-    #Set start in counting rows
+    lines = len(list(csv_Reader))
+
+    # Set start in counting rows
     for row in csv_Reader:
-        # totalRowCount.append(totalRows)
+        # rows.append(row)
         val = int(row[1])
         total = total + val
-        totalRows = len(budget_csv)
-        average = total / totalRows
+        # totalRows = len(budget_csv)
+        # average = total / totalRows
 
         if((val > 0) and val > highestProfit):
             highestProfit = val
@@ -38,9 +43,11 @@ with open(budget_csv) as csvfile:
 print ("_____________________________")
 print ("Financial Analysis")
 print ("_____________________________")
-print (f"Total Months: {totalRows}")
+print ("Total Months:")
+print (lines)
+# print (f"Total Months:  {lines}")
 print (f"Total: ${total}")
-print (f"Average Change: ${average}")
+# print (f"Average Change: ${average}")
 print (f"Greatest Increase in Profits:  {highestProfit}")
 # Retrieve corresponding month for greatest profit result
 # print (f"Greatest Increase in Profits:  [{str(budgetcsv.index(Date))}] {highestProfit}")
@@ -49,4 +56,4 @@ print (f"Greatest Decrease in Profits:  {lowestProfit}")
 # output to Analysis/csv folder
 with open(output_path, 'w') as csvfile:
     csvwriter = csv.writer(csvfile, delimiter=',')
-    csvwriter.writerow(['Total Months'])
+    csvwriter.writerow('Total Months: ')
